@@ -1,0 +1,80 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051)               Page 1
+Hexadecimal [24-Bits]
+
+
+
+                                      1 .module ily
+                                      2 
+                                      3 .area CSEG (ABS)
+                                      4 
+      000000                          5 .org 0x0000
+                                      6 
+      000000                          7 main:
+      000000 74 77            [12]    8     mov a, #0x77
+      000002 F8               [12]    9     mov r0, a
+      000003 79 0F            [12]   10     mov r1, #0x0f
+                                     11 
+      000005                         12 look_for_key_press:
+      000005 49               [12]   13     orl a, r1
+      000006 F5 90            [12]   14     mov p1, a
+      000008 E5 90            [12]   15     mov a, p1
+      00000A F4               [12]   16     cpl a
+      00000B 59               [12]   17     anl a, r1
+      00000C F5 F0            [12]   18     mov b, a
+                                     19 
+      00000E 70 05            [24]   20     jnz key_pressed
+                                     21 
+      000010                         22 update_out:
+      000010 E8               [12]   23     mov a, r0
+      000011 03               [12]   24     rr a
+      000012 F8               [12]   25     mov r0, a
+      000013 80 F0            [24]   26     sjmp look_for_key_press
+                                     27 
+      000015                         28 key_pressed:
+      000015 E8               [12]   29     mov a, r0
+      000016 F4               [12]   30     cpl a
+      000017 59               [12]   31     anl a, r1
+      000018 B5 F0 03         [24]   32     cjne a, b, not_equal
+      00001B 13               [12]   33     rrc a
+      00001C 80 04            [24]   34     sjmp gotem
+                                     35 
+      00001E                         36 not_equal:
+      00001E E8               [12]   37     mov a, r0
+      00001F 59               [12]   38     anl a, r1
+      000020 25 F0            [12]   39     add a, b
+                                     40 
+      000022                         41 gotem:
+      000022 24 29            [12]   42     add a, #seven_seg_lookup_table
+      000024 93               [24]   43     movc a, @a+dptr
+      000025 F5 A0            [12]   44     mov p2, a
+      000027 80 E7            [24]   45     sjmp update_out
+                                     46 
+      000029                         47 seven_seg_lookup_table:
+      000029 1A                      48 .byte 0x1a
+      00002A C2                      49 .byte 0xc2
+      00002B 46                      50 .byte 0x46
+      00002C E7                      51 .byte 0xe7
+      00002D FA                      52 .byte 0xfa
+      00002E EF                      53 .byte 0xef
+      00002F 36                      54 .byte 0x36
+      000030 BC                      55 .byte 0xbc
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051)               Page 2
+Hexadecimal [24-Bits]
+
+
+
+      000031 82                      56 .byte 0x82
+      000032 52                      57 .byte 0x52
+      000033 48                      58 .byte 0x48
+      000034 13                      59 .byte 0x13
+      000035 0E                      60 .byte 0x0e
+      000036 06                      61 .byte 0x06
+      000037 27                      62 .byte 0x27
+      000038 2D                      63 .byte 0x2d
+      000039 07                      64 .byte 0x07
+      00003A 02                      65 .byte 0x02
+      00003B 22                      66 .byte 0x22
+      00003C CA                      67 .byte 0xca
+      00003D AD                      68 .byte 0xad
+      00003E F2                      69 .byte 0xf2
+      00003F 87                      70 .byte 0x87

@@ -1,0 +1,14 @@
+return {
+    ["spicMcu"] = {
+        ["parent_dir"] = "tikzpics",
+    },
+    ["epicFinal"] = {
+        ["parent_dir"] = "tikzpics",
+    },
+    ["spicSevenSeg"] = {
+        ["parent_dir"] = "tikzpics",
+    },
+    ["spicKeypad"] = {
+        ["parent_dir"] = "tikzpics",
+    },
+}

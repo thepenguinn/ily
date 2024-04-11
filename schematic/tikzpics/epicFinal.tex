@@ -1,0 +1,162 @@
+\begin{tikzpicture}
+    \draw
+    (0,0)
+    \spicMcu {mcu} {center}
+    ;
+
+    \draw
+    (mcu-pin-01) ++(0.25,0.25) coordinate (mcufirstbend)
+    ;
+
+    \draw
+    (mcu-pin-08) \aroundcornerupright {($(mcu-pin-01)-(mcu-pin-08)$)} {(mcufirstbend)}
+    -- ++(8,0) -- ++(0.25,-0.25)
+    \spicKeypad {keypad} {pin-r1}
+    (mcu-pin-07) \aroundcornerupright {($(mcu-pin-01)-(mcu-pin-07)$)} {(mcufirstbend)}
+    \varcornerrightdown {(keypad-pin-r2)}
+    (mcu-pin-06) \aroundcornerupright {($(mcu-pin-01)-(mcu-pin-06)$)} {(mcufirstbend)}
+    \varcornerrightdown {(keypad-pin-r3)}
+    (mcu-pin-05) \aroundcornerupright {($(mcu-pin-01)-(mcu-pin-05)$)} {(mcufirstbend)}
+    \varcornerrightdown {(keypad-pin-r4)}
+    ;
+
+    \draw
+    (mcufirstbend) ++(2,0)
+    ++(0.25,-0.25)
+    coordinate (mcusecondbend)
+    (mcusecondbend)
+    \getmagnitude {mcu} {($(mcu-pin-01)-(mcu-pin-04)$)}
+    ++(\n{mcu-magtmp},0)
+    coordinate (tmp)
+    (tmp|-keypad-pin-c1)
+    ++(0.25,-0.25)
+    coordinate (mcupin4botheight)
+    \getmagnitude {mcu} {($(mcu-pin-01)-(mcu-pin-02)$)}
+    ++(0,-\n{mcu-magtmp}) coordinate (mcupin3botheight)
+    ++(0,-\n{mcu-magtmp}) coordinate (mcupin2botheight)
+    ++(0,-\n{mcu-magtmp}) coordinate (mcupin1botheight)
+    ;
+
+    \draw
+    (mcupin1botheight) ++(1,0) coordinate (tmp)
+    (mcu-pin-01) \varcornerupright {(mcufirstbend)}
+    \varcornerrightdown {(mcusecondbend)}
+    -- (intersection of tmp--mcupin1botheight and FCBTMP--SCBTMP)
+    \varcornerrightup {(keypad-pin-c4)}
+
+    (mcu-pin-02) \aroundcornerupright {($(mcu-pin-01)-(mcu-pin-02)$)} {(mcufirstbend)}
+    \aroundcornertillrightdown {($(mcu-pin-01)-(mcu-pin-02)$)} {(mcusecondbend)}
+    {(mcupin2botheight)} {(1,0)}
+    \varcornerrightup {(keypad-pin-c3)}
+
+    (mcu-pin-03) \aroundcornerupright {($(mcu-pin-01)-(mcu-pin-03)$)} {(mcufirstbend)}
+    \aroundcornertillrightdown {($(mcu-pin-01)-(mcu-pin-03)$)} {(mcusecondbend)}
+    {(mcupin3botheight)} {(1,0)}
+    \varcornerrightup {(keypad-pin-c2)}
+
+    (mcu-pin-04) \aroundcornerupright {($(mcu-pin-01)-(mcu-pin-04)$)} {(mcufirstbend)}
+    \aroundcornertillrightdown {($(mcu-pin-01)-(mcu-pin-04)$)} {(mcusecondbend)}
+    {(mcupin4botheight)} {(1,0)}
+    \varcornerrightup {(keypad-pin-c1)}
+    ;
+
+    \draw
+    (mcu-pin-28) ++(0.25,-0.25)
+    coordinate (mcubotfirstbend)
+    ;
+
+    \draw
+    (mcu-pin-23) \aroundcornerdownright {($(mcu-pin-28)-(mcu-pin-23)$)} {(mcubotfirstbend)}
+    -- ++(8,0) -- ++(0.25,-0.25)
+    \spicSevenSeg {sevenseg} {pin-10}
+
+    (mcu-pin-24) \aroundcornerdownright {($(mcu-pin-28)-(mcu-pin-24)$)} {(mcubotfirstbend)}
+    \aroundcornertillrightdown {($(mcu-pin-23)-(mcu-pin-24)$)} {(sevenseg-pin-10)}
+    {(sevenseg-pin-09)} {(0,1)}
+    -- (sevenseg-pin-09)
+
+    (mcu-pin-25) \aroundcornerdownright {($(mcu-pin-28)-(mcu-pin-25)$)} {(mcubotfirstbend)}
+    \aroundcornertillrightdown {($(mcu-pin-23)-(mcu-pin-25)$)} {(sevenseg-pin-10)}
+    {(sevenseg-pin-07)} {(0,1)}
+    -- (sevenseg-pin-07)
+
+    (mcu-pin-26) \aroundcornerdownright {($(mcu-pin-28)-(mcu-pin-26)$)} {(mcubotfirstbend)}
+    \aroundcornertillrightdown {($(mcu-pin-23)-(mcu-pin-26)$)} {(sevenseg-pin-10)}
+    {(sevenseg-pin-06)} {(0,1)}
+    -- (sevenseg-pin-06)
+
+    ;
+
+    \draw
+    (sevenseg-pin-05) ++(0.25,-0.25)
+    coordinate (sevensegbotfirstheight)
+    ++(0,-0.5)
+    coordinate (sevensegbotsecondheight)
+    (sevenseg-east) ++($(mcu-pin-24)-(mcu-pin-23)$)
+    coordinate (sevensegrightfirstvert)
+    ++($(mcu-pin-24)-(mcu-pin-23)$)
+    coordinate (sevensegrightsecondvert)
+    ;
+
+    \draw
+    (mcu-pin-21) \aroundcornertilldownright {($(mcu-pin-28)-(mcu-pin-21)$)} {(mcubotfirstbend)}
+    {(sevensegbotsecondheight)} {(1,0)}
+    \aroundcornertillrightup {($(mcu-pin-24)-(mcu-pin-23)$)} {(sevenseg-pin-01)}
+    {(sevenseg-pin-02)} {(0,1)}
+    -- (sevenseg-pin-02)
+
+    (mcu-pin-22) \aroundcornertilldownright {($(mcu-pin-28)-(mcu-pin-22)$)} {(mcubotfirstbend)}
+    {(sevensegbotfirstheight)} {(1,0)}
+    \varcornerrightup {(sevenseg-pin-01)}
+    ;
+
+    \draw
+    (mcu-pin-27) \aroundcornerdownright {($(mcu-pin-28)-(mcu-pin-27)$)} {(mcubotfirstbend)}
+    \aroundcornertillrightdown {($(mcu-pin-23)-(mcu-pin-27)$)} {(sevenseg-pin-10)}
+    {(sevensegrightfirstvert)} {(0,1)}
+    \varcornerdownleft {(sevensegrightfirstvert|-sevensegbotfirstheight) ++(-0.25,0)}
+    \varcornerleftup {(sevenseg-pin-05)}
+
+    (mcu-pin-28) \varcornerdownright {(mcubotfirstbend)}
+    \aroundcornertillrightdown {($(mcu-pin-23)-(mcu-pin-28)$)} {(sevenseg-pin-10)}
+    {(sevensegrightsecondvert)} {(0,1)}
+    \aroundcornertilldownleft
+    {($(mcu-pin-23)-(mcu-pin-24)$)} {(sevensegrightfirstvert|-sevensegbotfirstheight) ++(-0.25,0)}
+    {(sevensegbotsecondheight)} {(1,0)}
+    \aroundcornertillleftup {($(mcu-pin-24)-(mcu-pin-23)$)} {(sevenseg-pin-05)}
+    {(sevenseg-pin-04)} {(0,1)}
+    -- (sevenseg-pin-04)
+    ;
+
+    %% padding
+    \draw
+    \markgeocoordinate {final}
+    {(keypad-north) ++(0,1.5in)} {(sevensegbotsecondheight) ++(0,-0.25) ++(0,-1.5in)}
+    {(mcu-west) ++(-0.25,0) ++(-1.5in,0)} {(keypad-east) ++(1.5in,0)}
+    ;
+
+    \draw
+    (sevenseg-north-|keypad-center)
+    ++(-1,0)
+    node [anchor = center] {
+        \texttt{If only you could get to it.}
+    }
+    ;
+
+    \draw
+    \ovrSevenSegCathodePinHoles {sevenseg}
+    ;
+
+    \draw
+    \ovrKeypadRowColPinHoles {keypad}
+    ;
+
+    \foreach \x in {21,22,...,28} {
+        \draw (mcu-pin-\x) node [ocirc] {};
+    }
+
+    \foreach \x in {1,2,...,8} {
+        \draw (mcu-pin-0\x) node [ocirc] {};
+    }
+
+\end{tikzpicture}
