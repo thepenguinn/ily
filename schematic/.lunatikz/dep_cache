@@ -1,44 +1,64 @@
 return {
-    ["spicMcu"] = {
-        ["child_nodes"] = {
-            ["epicFinal"] = true,
-        },
-        ["default_build_child_nodes"] = {
-            ["epicFinal"] = true,
-        },
-        ["parent_nodes"] = {
-        },
-        ["lmodt"] = 1712728527,
-    },
-    ["spicSevenSeg"] = {
-        ["child_nodes"] = {
-            ["epicFinal"] = true,
-        },
-        ["default_build_child_nodes"] = {
-            ["epicFinal"] = true,
-        },
-        ["parent_nodes"] = {
-        },
-        ["lmodt"] = 1712797700,
-    },
-    ["spicKeypad"] = {
-        ["child_nodes"] = {
-            ["epicFinal"] = true,
-        },
-        ["default_build_child_nodes"] = {
-            ["epicFinal"] = true,
-        },
-        ["parent_nodes"] = {
-        },
-        ["lmodt"] = 1712734389,
-    },
     ["epicFinal"] = {
+        ["build_styles"] = {
+            ["default"] = true,
+        },
+        ["child_nodes"] = {
+        },
+        ["lmodt"] = 1735655523,
         ["parent_nodes"] = {
+            ["spicKeypad"] = true,
             ["spicMcu"] = true,
             ["spicSevenSeg"] = true,
-            ["spicKeypad"] = true,
         },
         ["style"] = "default",
-        ["lmodt"] = 1712754674,
+    },
+    ["spicKeypad"] = {
+        ["build_child_nodes"] = {
+            ["default"] = {
+                ["epicFinal"] = true,
+            },
+        },
+        ["child_nodes"] = {
+            ["epicFinal"] = true,
+        },
+        ["default_build_child_nodes"] = {
+            ["epicFinal"] = true,
+        },
+        ["lmodt"] = 1721494741,
+        ["parent_nodes"] = {
+        },
+    },
+    ["spicMcu"] = {
+        ["build_child_nodes"] = {
+            ["default"] = {
+                ["epicFinal"] = true,
+            },
+        },
+        ["child_nodes"] = {
+            ["epicFinal"] = true,
+        },
+        ["default_build_child_nodes"] = {
+            ["epicFinal"] = true,
+        },
+        ["lmodt"] = 1721494741,
+        ["parent_nodes"] = {
+        },
+    },
+    ["spicSevenSeg"] = {
+        ["build_child_nodes"] = {
+            ["default"] = {
+                ["epicFinal"] = true,
+            },
+        },
+        ["child_nodes"] = {
+            ["epicFinal"] = true,
+        },
+        ["default_build_child_nodes"] = {
+            ["epicFinal"] = true,
+        },
+        ["lmodt"] = 1721494741,
+        ["parent_nodes"] = {
+        },
     },
 }
